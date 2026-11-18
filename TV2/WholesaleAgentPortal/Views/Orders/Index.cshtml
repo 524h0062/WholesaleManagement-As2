@@ -1,0 +1,10 @@
+@model IReadOnlyList<OrderSummaryViewModel>
+@{ ViewData["Title"] = "My orders"; }
+<div class="page-title-row"><div><span class="eyebrow">YOUR ORDER HISTORY</span><h1>My orders</h1><p class="muted">Review past orders, shipment status and printable invoices.</p></div><a class="btn btn-primary" asp-action="Create">+ New order</a></div>
+<div class="panel data-panel"><div class="table-scroll"><table class="data-table"><thead><tr><th>Order</th><th>Placed (UTC)</th><th>Lines</th><th>Status</th><th class="numeric">Total</th><th></th></tr></thead><tbody>
+@foreach (var order in Model)
+{
+    <tr><td><strong>#@order.OrderId</strong></td><td>@order.OrderDate.ToString("dd MMM yyyy, HH:mm")</td><td>@order.LineCount</td><td><span class="pill @(order.OrderStatus == "Shipped" ? "pill-good" : "pill-warn")">@order.OrderStatus</span></td><td class="numeric money">@order.Total.ToString("N0") VND</td><td class="action-cell"><a asp-action="Details" asp-route-id="@order.OrderId" class="link">Details</a><span class="action-divider">·</span><a asp-action="Invoice" asp-route-id="@order.OrderId" class="link">Print</a></td></tr>
+}
+@if (Model.Count == 0) { <tr><td colspan="6" class="empty-row">No orders yet. <a asp-action="Create" class="link">Place your first order</a>.</td></tr> }
+</tbody></table></div></div>

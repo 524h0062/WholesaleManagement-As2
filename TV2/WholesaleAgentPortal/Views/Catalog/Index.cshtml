@@ -1,0 +1,25 @@
+@model IReadOnlyList<ProductOption>
+@{ ViewData["Title"] = "Product catalog"; }
+<div class="page-title-row"><div><span class="eyebrow">PRODUCTS &amp; INVENTORY</span><h1>Product catalog</h1><p class="muted">Browse available stock and build your next order.</p></div><a class="btn btn-primary" asp-controller="Orders" asp-action="Create">+ Create order</a></div>
+<div class="panel filterbar">
+    <form method="get" asp-action="Index" class="filter-form">
+        <label for="search" class="sr-only">Search product or size</label>
+        <input id="search" name="search" value="@ViewBag.Search" placeholder="Search by item name or size" />
+        <button class="btn btn-outline" type="submit">Search</button>
+        @if (!string.IsNullOrWhiteSpace((string?)ViewBag.Search)) { <a asp-action="Index" class="btn btn-muted">Clear</a> }
+    </form>
+    <span class="item-count">@Model.Count items</span>
+</div>
+<div class="panel data-panel">
+    <div class="table-scroll"><table class="data-table"><thead><tr><th>Item</th><th>Size / pack</th><th class="numeric">Unit price</th><th>Availability</th><th></th></tr></thead><tbody>
+    @foreach (var product in Model)
+    {
+        <tr><td><div class="product-cell"><span class="item-icon">▣</span><div><strong>@product.ItemName</strong><small>Item #@product.ItemId</small></div></div></td><td>@product.Size</td><td class="numeric money">@product.Price.ToString("N0") VND</td><td>
+            @if (product.StockQuantity == 0) { <span class="pill pill-off">Out of stock</span> }
+            else if (product.StockQuantity <= 10) { <span class="pill pill-warn">Low · @product.StockQuantity left</span> }
+            else { <span class="pill pill-good">In stock · @product.StockQuantity</span> }
+        </td><td class="action-cell">@if (product.StockQuantity > 0) { <a class="btn btn-small btn-outline" asp-controller="Orders" asp-action="Create" asp-route-itemId="@product.ItemId">Order →</a> }</td></tr>
+    }
+    @if (Model.Count == 0) { <tr><td colspan="5" class="empty-row">No products matched your search.</td></tr> }
+    </tbody></table></div>
+</div>

@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.11.12324.101 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WholesaleAgentPortal", "WholesaleAgentPortal\WholesaleAgentPortal.csproj", "{E1A68B7B-1A2F-4B08-98D9-71FE7FC51015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WholesaleAgentPortal.Tests", "WholesaleAgentPortal.Tests\WholesaleAgentPortal.Tests.csproj", "{F58AFC7E-A792-48A8-93A0-7F54D485CD4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1A68B7B-1A2F-4B08-98D9-71FE7FC51015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1A68B7B-1A2F-4B08-98D9-71FE7FC51015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1A68B7B-1A2F-4B08-98D9-71FE7FC51015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1A68B7B-1A2F-4B08-98D9-71FE7FC51015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F58AFC7E-A792-48A8-93A0-7F54D485CD4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F58AFC7E-A792-48A8-93A0-7F54D485CD4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F58AFC7E-A792-48A8-93A0-7F54D485CD4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F58AFC7E-A792-48A8-93A0-7F54D485CD4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4DFD0F8-1CD1-47E5-B9AD-72A58C4B05DE}
+	EndGlobalSection
+EndGlobal

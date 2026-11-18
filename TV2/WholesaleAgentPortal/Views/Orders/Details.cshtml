@@ -1,0 +1,7 @@
+@model OrderReceiptViewModel
+@{ ViewData["Title"] = $"Order #{Model.OrderId}"; }
+<div class="page-title-row"><div><span class="eyebrow">ORDER DETAILS</span><h1>Order #@Model.OrderId</h1><p class="muted">Placed @Model.OrderDate.ToString("dd MMM yyyy, HH:mm") UTC</p></div><div class="button-row"><a asp-action="Index" class="btn btn-muted">← My orders</a><a asp-action="Invoice" asp-route-id="@Model.OrderId" class="btn btn-primary">Print invoice</a></div></div>
+<div class="panel receipt-panel"><div class="receipt-summary"><div><span class="eyebrow">DISTRIBUTOR</span><h2>@Model.AgentName</h2><p>@Model.Address</p><p>@Model.Phone</p></div><div class="right"><span class="eyebrow">ORDER STATUS</span><p><span class="pill @(Model.OrderStatus == "Shipped" ? "pill-good" : "pill-warn")">@Model.OrderStatus</span></p></div></div>
+<div class="table-scroll"><table class="data-table"><thead><tr><th>Product</th><th>Size</th><th class="numeric">Qty</th><th class="numeric">Unit amount</th><th class="numeric">Amount</th></tr></thead><tbody>
+@foreach (var item in Model.Lines) { <tr><td><strong>@item.ItemName</strong></td><td>@item.Size</td><td class="numeric">@item.Quantity</td><td class="numeric">@item.UnitAmount.ToString("N0")</td><td class="numeric money">@((item.UnitAmount * item.Quantity).ToString("N0"))</td></tr> }
+</tbody></table></div><div class="receipt-total"><span>Total order value</span><strong>@Model.Total.ToString("N0") VND</strong></div></div>

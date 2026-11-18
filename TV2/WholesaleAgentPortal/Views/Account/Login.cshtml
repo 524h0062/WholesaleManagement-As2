@@ -1,0 +1,23 @@
+@model AccountLoginViewModel
+@{ ViewData["Title"] = "Agent sign in"; }
+<section class="login-wrap">
+    <div class="login-intro">
+        <div class="eyebrow">DISTRIBUTOR NETWORK</div>
+        <h1>Wholesale ordering,<br /><em>without the paperwork.</em></h1>
+        <p>Access the current product catalog, create wholesale orders and follow every shipment from one place.</p>
+        <div class="login-benefits"><span>Live inventory</span><span>Bulk ordering</span><span>Order history</span></div>
+    </div>
+    <div class="panel login-card">
+        <div class="eyebrow">SECURE AGENT ACCESS</div>
+        <h2>Welcome back</h2>
+        <p class="muted">Sign in with the account registered by your distributor.</p>
+        <form asp-action="Login" method="post" novalidate>
+            <input asp-for="ReturnUrl" type="hidden" />
+            <div asp-validation-summary="ModelOnly" class="validation" role="alert"></div>
+            <div class="field"><label asp-for="UserName"></label><input asp-for="UserName" autocomplete="username" placeholder="Enter your username" /><span asp-validation-for="UserName" class="field-error"></span></div>
+            <div class="field"><label asp-for="Password"></label><input asp-for="Password" autocomplete="current-password" placeholder="Enter your password" /><span asp-validation-for="Password" class="field-error"></span></div>
+            <button type="submit" class="btn btn-primary btn-block">Sign in to portal <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="secure-note">Only registered Agent accounts can use this portal.</p>
+    </div>
+</section>

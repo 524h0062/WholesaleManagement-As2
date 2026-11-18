@@ -1,0 +1,12 @@
+@model OrderReceiptViewModel
+@{ ViewData["Title"] = $"Invoice #{Model.OrderId}"; }
+<div class="invoice-toolbar no-print"><a asp-action="Details" asp-route-id="@Model.OrderId" class="btn btn-muted">← Back to order</a><button type="button" onclick="window.print()" class="btn btn-primary">Print / Save as PDF</button></div>
+<article class="invoice-sheet">
+    <div class="invoice-top"><div><div class="invoice-brand">WHOLESALE <span>/</span> DISTRIBUTION</div><p>B2B Wholesale Management System</p></div><div class="invoice-title">ORDER INVOICE<small>#@Model.OrderId</small></div></div>
+    <div class="invoice-meta"><div><span class="eyebrow">BILL TO</span><h3>@Model.AgentName</h3><p>@Model.Address</p><p>@Model.Phone</p></div><div class="invoice-details"><div><span>Order number</span><strong>#@Model.OrderId</strong></div><div><span>Order date (UTC)</span><strong>@Model.OrderDate.ToString("dd/MM/yyyy HH:mm")</strong></div><div><span>Status</span><strong>@Model.OrderStatus</strong></div></div></div>
+    <table class="invoice-table"><thead><tr><th>Product</th><th>Size</th><th class="numeric">Quantity</th><th class="numeric">Price (VND)</th><th class="numeric">Amount (VND)</th></tr></thead><tbody>
+    @foreach (var line in Model.Lines) { <tr><td>@line.ItemName</td><td>@line.Size</td><td class="numeric">@line.Quantity</td><td class="numeric">@line.UnitAmount.ToString("N0")</td><td class="numeric">@((line.Quantity * line.UnitAmount).ToString("N0"))</td></tr> }
+    </tbody></table>
+    <div class="invoice-totals"><span>TOTAL</span><strong>@Model.Total.ToString("N0") VND</strong></div>
+    <p class="invoice-footnote">This document is a printable order record for coursework demonstration. It is not a VAT tax invoice.</p>
+</article>

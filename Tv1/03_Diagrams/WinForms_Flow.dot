@@ -1,0 +1,19 @@
+digraph AdminFlow {
+ graph [rankdir=TB, bgcolor="#ffffff", pad="0.3", nodesep="0.4", ranksep="0.65", fontname="Arial", label="TV1  |  BACK-OFFICE FUNCTIONAL FLOW", labelloc=t, fontsize=18, fontcolor="#173a60"];
+ node [shape=box, fontname="Arial", style="rounded,filled", color="#9bbcd3", fillcolor="#eff5fb", fontcolor="#173a60", margin="0.18,0.12"];
+ edge [color="#466f90", arrowsize=0.7, fontname="Arial", fontsize=10];
+ login [label="Login Form\nRole = Admin / Account unlocked"];
+ deny [label="Access denied / Locked", fillcolor="#fff1ef", color="#d9776d"];
+ main [label="Admin Dashboard\nSigned-in session", fillcolor="#dceaf8"];
+ items [label="Item CRUD\nStock & RowVersion"];
+ agents [label="Agent CRUD\nFK rules"];
+ orders [label="Incoming Orders\nPending → Shipped"];
+ manifest [label="Shipping Manifest\nPreview / HTML print to PDF"];
+ analysis [label="Data Dashboard\nTop-selling / Low stock / Agent revenue"];
+ sql [label="SQL Server\n5 shared tables", shape=cylinder, fillcolor="#e4f1eb", color="#5f9782"];
+ login -> main [label="Authenticated"];
+ login -> deny [label="Wrong role / password / lock", color="#d9776d"];
+ main -> items; main -> agents; main -> orders; main -> analysis;
+ orders -> manifest;
+ items -> sql; agents -> sql; orders -> sql; analysis -> sql;
+}

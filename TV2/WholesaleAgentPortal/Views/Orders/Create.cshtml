@@ -1,0 +1,25 @@
+@model CreateOrderViewModel
+@{ ViewData["Title"] = "Create wholesale order"; }
+<div class="page-title-row"><div><span class="eyebrow">ORDER MANAGEMENT</span><h1>Create a wholesale order</h1><p class="muted">Choose products and quantities. Stock and prices are checked when you submit.</p></div><a class="btn btn-muted" asp-action="Index">← My orders</a></div>
+<form method="post" asp-action="Create" id="order-form">
+    <div asp-validation-summary="All" class="validation" role="alert"></div>
+    <div class="panel order-panel">
+        <div class="panel-heading"><div><h2>Order items</h2><span class="muted">Up to 20 rows. Repeated items are combined before saving.</span></div><span class="pill pill-info">Pending after submission</span></div>
+        <div class="table-scroll"><table class="data-table order-table"><thead><tr><th>Product</th><th class="numeric">Price</th><th class="numeric">Stock</th><th>Quantity</th><th class="numeric">Subtotal</th><th></th></tr></thead><tbody id="order-rows">
+            @for (var i = 0; i < Model.Lines.Count; i++)
+            {
+                <tr class="order-row"><td><label class="sr-only" for="item-@i">Product</label><select id="item-@i" name="Lines[@i].ItemId" class="product-select" required>
+                    <option value="">Select an item</option>
+                    @foreach (var item in Model.Catalog)
+                    {
+                        <option value="@item.ItemId" data-price="@item.Price.ToString(System.Globalization.CultureInfo.InvariantCulture)" data-stock="@item.StockQuantity" selected="@(item.ItemId == Model.Lines[i].ItemId)">@item.ItemName (@item.Size)</option>
+                    }
+                </select></td><td class="numeric price-cell">—</td><td class="numeric stock-cell">—</td><td><label class="sr-only" for="qty-@i">Quantity</label><input id="qty-@i" class="quantity-input" name="Lines[@i].Quantity" type="number" min="1" max="5000" required value="@Model.Lines[i].Quantity" /></td><td class="numeric money subtotal-cell">—</td><td><button class="remove-row" type="button" aria-label="Remove row">×</button></td></tr>
+            }
+        </tbody></table></div>
+        <div class="order-actions"><button id="add-line" type="button" class="btn btn-outline">+ Add another product</button><span id="line-count" class="muted">1 line</span></div>
+        <div class="order-footer"><div><span class="eyebrow">ESTIMATED TOTAL</span><div id="order-total" class="total-price">0 VND</div><small class="muted">Final values are calculated from the database.</small></div><button type="submit" class="btn btn-primary btn-large">Place order →</button></div>
+    </div>
+</form>
+<template id="order-line-template"><tr class="order-row"><td><label class="sr-only">Product</label><select class="product-select" required><option value="">Select an item</option>@foreach (var item in Model.Catalog) { <option value="@item.ItemId" data-price="@item.Price.ToString(System.Globalization.CultureInfo.InvariantCulture)" data-stock="@item.StockQuantity">@item.ItemName (@item.Size)</option> }</select></td><td class="numeric price-cell">—</td><td class="numeric stock-cell">—</td><td><label class="sr-only">Quantity</label><input class="quantity-input" type="number" min="1" max="5000" required value="1" /></td><td class="numeric money subtotal-cell">—</td><td><button class="remove-row" type="button" aria-label="Remove row">×</button></td></tr></template>
+@section Scripts { <script src="~/js/order.js" asp-append-version="true"></script> }

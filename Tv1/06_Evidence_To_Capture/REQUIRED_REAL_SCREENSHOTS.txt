@@ -1,0 +1,24 @@
+CAPTURE REAL WINDOWS / SQL SERVER SCREENSHOTS FOR TV1
+
+DB_01_SSMS_Tables_5.png              SSMS: all five tables
+DB_02_SSMS_Seed_Counts.png          Run 03_Verify_Data.sql (20/15/18/27/18)
+DB_03_SSMS_Integrity_Audit.png      All violation counts = 0
+DB_04_SSMS_Relationships.png        Actual FKs / Diagram from SQL Server
+UI_01_Login_Admin_Success.png      Login as admin01 and show MainForm
+UI_02_Login_Agent_Denied.png       Attempt agent01
+UI_03_Login_Locked.png             Wrong password 5 times
+UI_04_Item_List.png                Items table and stock data
+UI_05_Item_Edit.png                Real Item editing form
+UI_06_Agent_CRUD.png               Agent list and editing form
+UI_06B_Agent_Create_Login.png     Real Create Agent Login dialog
+UI_07_Order_Pending.png            Real Pending order and detail lines
+UI_08_Order_Shipped.png            Same order after update
+UI_09_Manifest_PrintPreview.png    Native Print Preview
+UI_10_Manifest_Exported.png        Exported report opened in browser
+UI_11_Dashboard.png                Three dashboard sections
+IN_01_Web_Order_Desktop.png        TV2 created Order appears in WinForms
+IN_02_Web_Shipped_Status.png       Agent Portal reflects status updated by TV1
+GI_01_TV1_Commits.png              Real TV1 feature commits
+GI_02_TV1_PR.png                   Real pull request with review
+
+Do not paste the UI_Concept_Not_Screenshot.png file as runtime evidence.

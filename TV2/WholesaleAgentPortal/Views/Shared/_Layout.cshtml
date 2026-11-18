@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#292827" />
+    <title>@ViewData["Title"] | Wholesale Agent Portal</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="topbar no-print">
+        <div class="container topbar-inner">
+            <a class="brand" asp-controller="Catalog" asp-action="Index"><span class="brand-mark">W</span><span>WHOLESALE <small>AGENT PORTAL</small></span></a>
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <nav class="navlinks" aria-label="Main navigation">
+                    <a asp-controller="Catalog" asp-action="Index">Catalog</a>
+                    <a asp-controller="Orders" asp-action="Create">New order</a>
+                    <a asp-controller="Orders" asp-action="Index">My orders</a>
+                </nav>
+                <div class="session"><span class="session-user">@User.Identity.Name</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post"><button type="submit" class="signout">Log out</button></form>
+                </div>
+            }
+        </div>
+    </header>
+    <main class="container page">
+        @if (TempData["Success"] is string success)
+        {
+            <div class="alert alert-success no-print" role="status">@success</div>
+        }
+        @RenderBody()
+    </main>
+    <footer class="footer no-print"><div class="container">B2B Wholesale Management System <span>·</span> Agent Ordering Portal</div></footer>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

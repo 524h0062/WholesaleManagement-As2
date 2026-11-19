@@ -1,0 +1,46 @@
+﻿CÁC CHỖ ĐÃ SỬA — 19/11/2026
+
+1. Report.docx
+- Sửa các trạng thái và kết luận cũ chưa khớp với minh chứng.
+- Phân biệt lần test TV2 và TV3: cùng mã #19 nhưng thuộc hai lần chạy khác nhau.
+- Ghi đúng lần TV3: A4 3, A3 2; tổng 443.500 VND; tồn A4 167, A3 73.
+- Bổ sung kết quả đơn #27: A4 2; tổng 137.000 VND; tồn A4 165.
+- Bổ sung đầy đủ kết quả đơn #28: gộp 3 + 4 thành một chi tiết số lượng 7;
+  tổng 479.500 VND; tồn A4 158; có 21 đơn và 31 chi tiết.
+- Làm rõ giới hạn test rollback: dữ liệu không đổi sau lỗi lưu, nhưng ảnh
+  không chứng minh câu lệnh THROW trong trigger đã được thực thi.
+- Làm rõ khác biệt tên trigger TR_TV3_TestRollback và TR_TV#_TestRollBack.
+- Ghi đúng 8 unit tests; tách unit tests khỏi kiểm thử Web/SQL Server.
+- Đồng bộ thông tin Git/PR theo ảnh; không ghi nhận peer review khi chưa có.
+- Sửa heading, mục lục, số trang, chú thích ảnh, bảng và ngắt trang.
+
+2. Team_Workbook.xlsx
+- Đồng bộ kết quả test, tiến độ, Git, cấu hình, minh chứng và nhật ký AI.
+- Bổ sung công thức % hoàn thành bị thiếu; sửa công thức đếm PR thiếu review.
+- Sửa các lựa chọn nhập liệu để phù hợp với kết quả đang dùng.
+- Giữ tên và thứ tự các sheet, biểu mẫu, dữ liệu đúng và ô nhận xét giảng viên.
+- Kiểm tra công thức tổng kết với thay đổi thử, rồi khôi phục số liệu thực.
+
+3. Hướng dẫn và đóng gói
+- Bổ sung Readme.txt, sửa đường dẫn/hướng dẫn lỗi trong README.
+- Đổi tên ảnh bị gắn nhầm ExactStock thành TV3_Duplicate_Detail.png.
+- Lưu riêng hai ảnh Git có sẵn trong báo cáo vào TV3_TestEvidence.
+- Loại file tạm TV2/~WRL1439.tmp.
+- Đưa bản báo cáo và workbook hiện hành ra ngoài SourceCode.zip để tránh
+  tồn tại hai bản kết quả trái nhau. Tài liệu bàn giao TV1 và phân công gốc
+  vẫn giữ làm tài liệu lịch sử, không thay cho báo cáo tổng hợp hiện hành.
+- Giữ nguyên mã nguồn C#, SQL, project, cấu hình và tài nguyên ứng dụng.
+
+GIỚI HẠN KIỂM CHỨNG
+- Không chạy thêm Visual Studio, WinForms hoặc SQL Server trong lần sửa này.
+- Kết quả runtime lấy từ ảnh do nhóm cung cấp; không tạo kết quả giả.
+- Exact-stock, concurrent ordering và một số kiểm thử desktop chưa đủ bằng
+  chứng vẫn được ghi rõ là chưa chạy/chưa kiểm chứng đầy đủ.
+- Tỷ lệ đóng góp 33% / 34% / 33% giữ theo bản gốc, chờ nhóm xác nhận.
+- File ZIP này không tự cập nhật repository GitHub.
+
+CÁCH DÙNG
+- Report.docx: báo cáo tổng hợp hiện hành.
+- Team_Workbook.xlsx: bảng công việc, kết quả và minh chứng hiện hành.
+- Readme.txt: đọc trước khi chạy.
+- SourceCode.zip: giải nén để mở solution Visual Studio.

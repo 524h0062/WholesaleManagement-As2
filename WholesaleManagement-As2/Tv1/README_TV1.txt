@@ -24,13 +24,11 @@ Student: Lê Trần Thanh Trúc (524H0073)
   UI_Concept_Not_Screenshot.png    UI illustration only; not execution evidence
 
 04_Documentation
-  TV1_Report_Sections_524H0073.docx       TV1 text/diagrams to merge into report
-  Report_GROUP_DRAFT_TV1_Added.docx      Lecturer group template, TV1 portion added
-  TEAM_DATABASE_CONTRACT.md                   Technical handover to TV2/TV3
+  tv1.docx                         Historical TV1 draft/template material
 
 05_Checklists
-  TV1_Test_And_Handover.xlsx       30 test scenarios, seed checks, team decisions
-  TV1_KIEM_TRA_TRUOC_BAN_GIAO.txt  Vietnamese manual checklist
+  SE_Lab_QT2_Assignment2_Team_Workbook_Template.xlsx
+                                   Historical team workbook template
 
 06_Evidence_To_Capture
   REQUIRED_REAL_SCREENSHOTS.txt   Actual screenshots to collect in Windows/SSMS
@@ -97,8 +95,9 @@ The TV1 standalone SQL schema creates database tables explicitly. For the
 final TV2 Code First migration, CREATE A CLEAN EMPTY DATABASE and apply TV2's
 matching EF Core migration. Do not create the schema with TV1 SQL and then
 apply an initial EF Core migration that tries to create the same tables.
-Run 02_Seed_Data.sql after the new EF schema is installed, if its object
-names/types/constraints match TEAM_DATABASE_CONTRACT.md.
+Run 02_Seed_Data.sql after a fresh EF schema only if its table names,
+types and constraints match 01_Standalone_Create_Schema.sql. The final
+group instructions use the SQL-script route; see the root README.md.
 
 TV1 owns the database contract and WinForms, not the Web order transaction.
 TV2 must implement the atomic order + details + stock decrement transaction.
@@ -126,3 +125,9 @@ Confirmed shared contract date: ____/____/2026
 Git repository and TV1 branch: ________________________________________
 
 Final Assignment 2 package is assembled by the group leader: Report.docx, SourceCode.zip and Readme.txt. Do not submit the TV1-only ZIP as the complete group submission.
+
+FINAL PACKAGE NOTE (19 Nov 2026)
+This file preserves the earlier TV1 handover context. The consolidated
+Report.docx, Team_Workbook.xlsx and root Readme.txt supersede its historical
+pending statuses. Missing handover filenames above have been corrected to
+the files actually present. Application source and SQL scripts are unchanged.

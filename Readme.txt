@@ -1,32 +1,32 @@
-# Wholesale Management — Assignment 2
+﻿WHOLESALE MANAGEMENT — ASSIGNMENT 2
 
 A wholesale management system with a Web Agent Portal
 and a WinForms Back Office sharing a SQL Server database.
 
-## Repository
+REPOSITORY
 
 https://github.com/524h0062/WholesaleManagement-As2
 
-## Project folders
+PROJECT FOLDERS
 
 - Tv1/01_Database: database creation, seed and verification scripts.
 - Tv1/02_WinForms: WinForms Back Office.
-- TV2: Web Agent Portal, unit tests and report files.
+- TV2: Web Agent Portal and unit tests.
+- Final Report.docx and Team_Workbook.xlsx are beside SourceCode.zip in the submission.
 - TV3_TestEvidence: integration testing screenshots and test summary.
 
-## Requirements
+REQUIREMENTS
 
 - Windows.
-- Visual Studio with ASP.NET and web development,
+- Visual Studio 2022 version 17.8 or later with ASP.NET and web development,
   and .NET desktop development workloads.
 - .NET 8 SDK for the Web application.
 - SQL Server Express and SQL Server Management Studio.
 - Internet access for restoring NuGet packages.
 
-Install any additional targeting pack requested by Visual Studio
-when opening the WinForms project.
+Install the .NET Framework 4.8 targeting pack for the WinForms project.
 
-## Database setup
+DATABASE SETUP
 
 For a new database, open the scripts in Tv1/01_Database
 using SQL Server Management Studio and execute in this order:
@@ -42,7 +42,7 @@ Do not rerun the seed script merely to start the application.
 Do not apply an initial EF migration that recreates tables
 already created by the SQL scripts.
 
-## Connection configuration
+CONNECTION CONFIGURATION
 
 Update the WholesaleDB connection string in:
 
@@ -56,7 +56,7 @@ Use the SQL Server instance name on the target computer.
 The instance used during testing was:
 DESKTOP-RF4B5N1\SQLEXPRESS
 
-## Run the Web Agent Portal
+RUN THE WEB AGENT PORTAL
 
 1. Open TV2/TV2_AgentPortal.sln in Visual Studio.
 2. Restore NuGet packages and build the solution.
@@ -64,14 +64,14 @@ DESKTOP-RF4B5N1\SQLEXPRESS
 4. Run using the Development profile.
 5. Sign in using an Agent account.
 
-## Run the WinForms Back Office
+RUN THE WINFORMS BACK OFFICE
 
 1. Open Tv1/02_WinForms/AdminBackOffice.sln.
 2. Restore NuGet packages and build the solution.
 3. Run the WinForms application.
 4. Sign in using an Admin account.
 
-## Demo accounts
+DEMO ACCOUNTS
 
 These accounts are for the local seeded demonstration database.
 
@@ -80,7 +80,7 @@ These accounts are for the local seeded demonstration database.
 | Web | agent01 | Agent@2026! |
 | WinForms | admin01 | Admin@2026! |
 
-## Run unit tests
+RUN UNIT TESTS
 
 1. Open TV2/TV2_AgentPortal.sln.
 2. Select Test > Test Explorer.
@@ -89,7 +89,7 @@ These accounts are for the local seeded demonstration database.
 
 Unit-test results are separate from SQL Server integration tests.
 
-## Testing evidence
+TESTING EVIDENCE
 
 See TV3_TestEvidence and the testing section of the report.
 
@@ -100,14 +100,55 @@ Recorded evidence includes:
 - Failed-order persistence checks.
 - Authorization and account lockout checks.
 
-Duplicate-item stock verification, exact-stock ordering and
-concurrent ordering are not fully evidenced and must not
-be reported as passed.
+Order #28 combines A4 quantities 3 + 4 into one saved detail.
+A4 stock changes from 165 to 158; order/detail counts become 21/31.
+The eight submitted unit tests passed in the supplied Test Explorer evidence.
+Exact-stock and concurrent SQL Server integration tests remain Not run.
+Full desktop CRUD, manifest, dashboard and desktop lockout runtime coverage
+is incomplete.
 
-## Troubleshooting
+The failed-save test demonstrates unchanged persistent data. Later
+troubleshooting identified an SQL OUTPUT/trigger compatibility error;
+execution of the intended trigger THROW is not established. The earlier
+cleanup image checks TR_TV3_TestRollback, not TR_TV#_TestRollBack.
+Successful Order #27 demonstrates recovery after troubleshooting.
+
+TROUBLESHOOTING
 
 - Connection failure: check the SQL Server service, instance name,
   database name and connection strings.
 - Order saving failure after rollback testing: inspect remaining
   temporary test triggers and remove only the test trigger.
 - Remove temporary diagnostic messages before submission.
+
+RECORDED CONTRIBUTIONS
+
+The existing report and workbook record the following allocation.
+The group should confirm these percentages against the actual work.
+
+| Member | Student ID | Responsibility | Contribution |
+|---|---|---|---|
+| Lê Trần Thanh Trúc | 524H0073 | Database and WinForms | 33% |
+| Quan Bội San | 524H0185 | Web Agent Portal | 34% |
+| Diệp Phương Nghi | 524H0062 | Unit tests, integration, configuration, Git and report | 33% |
+| Total | | | 100% |
+
+GIT EVIDENCE
+
+Main branch: master. TV3 branch: tv3/testing-report.
+PR #1: https://github.com/524h0062/WholesaleManagement-As2/pull/1
+The supplied evidence shows this PR merged, with no peer review recorded.
+Git was introduced after the initial implementation; the initial import
+is not a complete development history. No new Git push is performed by
+extracting this final submission ZIP.
+
+SUBMISSION AND HISTORICAL REFERENCES
+
+Submit Report.docx, SourceCode.zip and Readme.txt together.
+Team_Workbook.xlsx is the supporting working record.
+Extract SourceCode.zip before opening either Visual Studio solution.
+Use Report.docx and Team_Workbook.xlsx as the current consolidated record.
+The TV1 handover report/checklist and original task-allocation document
+are retained as historical references. Their earlier pending statuses
+and template instructions are not the final group results.
+Video demo: not provided (optional).
